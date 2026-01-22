@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../store/authStore'
-import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import LanguageSelector from '../LanguageSelector'
 
@@ -51,7 +50,7 @@ export default function Header() {
                 onClick={handleLogout}
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
               >
-                로그아웃
+                {t('header.logout')}
               </button>
             </div>
           ) : (
@@ -59,13 +58,10 @@ export default function Header() {
               to="/login"
               className="px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
             >
-              로그인
+              {t('header.login')}
             </Link>
           )}
           <LanguageSelector />
-          <button className="px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">
-            {t('header.login')}
-          </button>
         </nav>
       </div>
     </header>
