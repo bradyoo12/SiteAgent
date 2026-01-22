@@ -57,15 +57,15 @@ Only after user approval, create the issue:
 gh issue create --repo bradyoo12/{repo-name} --title "{title}" --body-file {draft-file}
 ```
 
-## Step 5: Add to Project (If Applicable)
+## Step 5: Add to SiteAgent Project
 
-After creating the issue, if a GitHub project exists, add the issue to it:
+After creating the issue, add it to the SiteAgent project board:
 
 ```bash
-gh project item-add {project-number} --owner bradyoo12 --url {issue-url}
+gh project item-add 21 --owner bradyoo12 --url {issue-url}
 ```
 
-Report the created issue URL back to the user.
+Report the created issue URL and confirm it was added to the project.
 
 ## Important Notes
 
