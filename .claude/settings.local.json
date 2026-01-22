@@ -21,7 +21,11 @@
       "Bash(cmd /c \"cd frontend && npm install\")",
       "Bash(npm.cmd install:*)",
       "Bash(npm.cmd run dev:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(powershell -Command \"Start-Process cmd -ArgumentList ''/k'', ''cd /d e:\\\\Github\\\\bradyoo12\\\\SiteAgent\\\\frontend && npm run dev''\")",
+      "Bash(powershell -Command \"Start-Process ''e:\\\\Github\\\\bradyoo12\\\\SiteAgent\\\\backend\\\\SiteAgent.sln''\")",
+      "Bash(powershell -Command \"cd ''e:\\\\Github\\\\bradyoo12\\\\SiteAgent\\\\frontend''; npm install\")",
+      "Bash(powershell -Command \"Test-Path ''e:\\\\Github\\\\bradyoo12\\\\SiteAgent\\\\.claude\\\\commands''\")"
     ]
   }
 }
