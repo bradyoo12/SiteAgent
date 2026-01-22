@@ -28,7 +28,9 @@
       "Bash(powershell -Command \"Test-Path ''e:\\\\Github\\\\bradyoo12\\\\SiteAgent\\\\.claude\\\\commands''\")",
       "Bash(gh project:*)",
       "Skill(create-ticket)",
-      "Skill(create-ticket:*)"
+      "Skill(create-ticket:*)",
+      "Bash(gh issue create:*)",
+      "Bash(tree:*)"
     ]
   }
 }
