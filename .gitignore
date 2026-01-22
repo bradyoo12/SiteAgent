@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+dist/
+build/
+*.dll
+*.exe
+*.pdb
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# Environment
+.env
+.env.local
+.env.*.local
+appsettings.Development.json
+appsettings.Production.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+*.coverage
+
+# Misc
+*.tmp
+*.temp
+.cache/

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npm install)",
+      "Bash(npx create-vite@latest frontend --template react-ts)",
+      "Bash(dotnet new:*)",
+      "Bash(dotnet sln:*)",
+      "Bash(dotnet add:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git init:*)",
+      "Bash(gh repo delete:*)",
+      "Bash(gh auth refresh:*)",
+      "Bash(dotnet build:*)",
+      "Bash(gh repo view:*)",
+      "Bash(gh auth:*)",
+      "Bash(powershell -Command \"Start-Process cmd -ArgumentList ''/k'', ''cd /d c:\\\\Github\\\\bradyoo12\\\\SiteAgent\\\\frontend && npm run dev''\")",
+      "Bash(powershell -Command \"Start-Process ''c:\\\\Github\\\\bradyoo12\\\\SiteAgent\\\\backend\\\\SiteAgent.sln''\")",
+      "Bash(npm --version:*)",
+      "Bash(where npm:*)",
+      "Bash(cmd /c \"cd frontend && npm install\")",
+      "Bash(npm.cmd install:*)",
+      "Bash(npm.cmd run dev:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
