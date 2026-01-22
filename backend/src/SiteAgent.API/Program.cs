@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SiteAgent.Core.Interfaces;
 using SiteAgent.Infrastructure.Data;
+using SiteAgent.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +14,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Gemini Service
+builder.Services.AddHttpClient<IGeminiService, GeminiService>();
+
 // CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins("http://localhost:3000", "http://localhost:3001")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();

@@ -54,7 +54,11 @@
       "Bash(findstr:*)",
       "Bash(dotnet list:*)"
       "Bash(git stash:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(dotnet list:*)",
+      "Bash(del c:Githubbradyoo12SiteAgentticket-draft.md)",
+      "Bash(cmd /c \"az account show\")",
+      "Bash(timeout:*)"
     ]
   }
 }

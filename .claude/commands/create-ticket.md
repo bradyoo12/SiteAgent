@@ -57,15 +57,15 @@ Only after user approval, create the issue:
 gh issue create --repo bradyoo12/{repo-name} --title "{title}" --body-file {draft-file}
 ```
 
-## Step 5: Add to SiteAgent Project
+## Step 5: Add to BYLabs Project as Todo
 
-After creating the issue, add it to the SiteAgent project board:
+After creating the issue, add it to the BYLabs project board as a Todo:
 
 ```bash
-gh project item-add 21 --owner bradyoo12 --url {issue-url}
+gh project item-add 18 --owner bradyoo12 --url {issue-url}
 ```
 
-Report the created issue URL and confirm it was added to the project.
+Report the created issue URL and confirm it was added to the BYLabs project.
 
 ## Important Notes
 
