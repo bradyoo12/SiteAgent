@@ -51,7 +51,10 @@
       "Bash(dotnet clean:*)",
       "Bash(dotnet list:*)",
       "Bash(netstat:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(dotnet list:*)"
+      "Bash(git stash:*)",
+      "Bash(taskkill:*)"
     ]
   }
 }

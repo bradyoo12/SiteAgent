@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Home() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const handleStartChat = () => {
     navigate('/chat')
@@ -11,37 +13,37 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] px-4">
       <div className="max-w-3xl text-center">
         <h1 className="text-5xl font-bold text-gray-900 mb-6">
-          대화로 만드는
-          <span className="text-primary-600"> 나만의 웹사이트</span>
+          {t('home.hero.title')}
+          <span className="text-primary-600"> {t('home.hero.highlight')}</span>
         </h1>
         <p className="text-xl text-gray-600 mb-8">
-          코딩 없이 AI와 대화하며 웹사이트를 만들어보세요.
+          {t('home.hero.description1')}
           <br />
-          아이디어만 있으면 충분합니다.
+          {t('home.hero.description2')}
         </p>
         <button
           onClick={handleStartChat}
           className="px-8 py-4 bg-primary-600 text-white text-lg font-semibold rounded-lg hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl"
         >
-          무료로 시작하기
+          {t('home.cta.button')}
         </button>
         <p className="mt-4 text-sm text-gray-500">
-          신용카드 불필요 · 무료로 사이트 생성 가능
+          {t('home.cta.subtext')}
         </p>
       </div>
 
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl">
         <FeatureCard
-          title="대화형 생성"
-          description="원하는 사이트를 자연어로 설명하면 AI가 자동으로 생성합니다."
+          title={t('home.features.conversational.title')}
+          description={t('home.features.conversational.description')}
         />
         <FeatureCard
-          title="실시간 프리뷰"
-          description="생성 과정을 실시간으로 확인하며 수정할 수 있습니다."
+          title={t('home.features.preview.title')}
+          description={t('home.features.preview.description')}
         />
         <FeatureCard
-          title="즉시 배포"
-          description="완성된 사이트는 바로 임시 URL로 배포됩니다."
+          title={t('home.features.deploy.title')}
+          description={t('home.features.deploy.description')}
         />
       </div>
     </div>
