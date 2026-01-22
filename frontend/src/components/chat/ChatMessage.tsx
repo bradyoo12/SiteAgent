@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Message } from '../../types/chat'
 
 interface ChatMessageProps {
@@ -6,6 +7,15 @@ interface ChatMessageProps {
 
 export default function ChatMessage({ message }: ChatMessageProps) {
   const isUser = message.role === 'user'
+  const { i18n } = useTranslation()
+
+  const formatTime = (date: Date): string => {
+    const locale = i18n.language === 'ko' ? 'ko-KR' : 'en-US'
+    return new Intl.DateTimeFormat(locale, {
+      hour: '2-digit',
+      minute: '2-digit',
+    }).format(date)
+  }
 
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
@@ -27,11 +37,4 @@ export default function ChatMessage({ message }: ChatMessageProps) {
       </div>
     </div>
   )
-}
-
-function formatTime(date: Date): string {
-  return new Intl.DateTimeFormat('ko-KR', {
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(date)
 }

@@ -1,5 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../store/authStore'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import LanguageSelector from '../LanguageSelector'
 
 export default function Header() {
   const navigate = useNavigate()
@@ -9,6 +12,8 @@ export default function Header() {
     logout()
     navigate('/')
   }
+
+  const { t } = useTranslation()
 
   return (
     <header className="h-16 border-b border-gray-200 bg-white">
@@ -20,9 +25,9 @@ export default function Header() {
           <span className="text-xl font-bold text-gray-900">SiteAgent</span>
         </Link>
 
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-4">
           <Link to="/chat" className="text-gray-600 hover:text-gray-900 transition-colors">
-            새 프로젝트
+            {t('header.newProject')}
           </Link>
           {isAuthenticated ? (
             <div className="flex items-center gap-4">
@@ -46,7 +51,7 @@ export default function Header() {
                 onClick={handleLogout}
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
               >
-                로그아웃
+                �α׾ƿ�
               </button>
             </div>
           ) : (
@@ -54,9 +59,13 @@ export default function Header() {
               to="/login"
               className="px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
             >
-              로그인
+              �α���
             </Link>
           )}
+          <LanguageSelector />
+          <button className="px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">
+            {t('header.login')}
+          </button>
         </nav>
       </div>
     </header>
