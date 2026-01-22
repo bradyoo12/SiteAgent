@@ -10,7 +10,7 @@ interface ChatState {
   clearMessages: () => void
 }
 
-export const useChatStore = create<ChatState>((set, get) => ({
+export const useChatStore = create<ChatState>((set) => ({
   messages: [],
   isLoading: false,
   error: null,
