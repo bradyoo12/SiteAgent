@@ -49,3 +49,4 @@ coverage/
 *.tmp
 *.temp
 .cache/
+/backend/src/SiteAgent.API/appsettings.json
