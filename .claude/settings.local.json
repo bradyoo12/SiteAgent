@@ -49,7 +49,9 @@
       "Bash(git stash:*)",
       "Bash(dotnet restore:*)",
       "Bash(dotnet clean:*)",
-      "Bash(dotnet list:*)"
+      "Bash(dotnet list:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)"
     ]
   }
 }
