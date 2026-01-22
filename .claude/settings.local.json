@@ -51,7 +51,8 @@
       "Bash(dotnet clean:*)",
       "Bash(dotnet list:*)",
       "Bash(del c:Githubbradyoo12SiteAgentticket-draft.md)",
-      "Bash(cmd /c \"az account show\")"
+      "Bash(cmd /c \"az account show\")",
+      "Bash(timeout:*)"
     ]
   }
 }

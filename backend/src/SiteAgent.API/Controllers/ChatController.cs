@@ -22,7 +22,51 @@ public class ChatController : ControllerBase
     [HttpPost("message")]
     public async Task<IActionResult> SendMessage([FromBody] SendMessageRequest request)
     {
-        var projectId = request.ProjectId ?? Guid.NewGuid();
+        Guid projectId;
+
+        if (request.ProjectId.HasValue)
+        {
+            projectId = request.ProjectId.Value;
+            var projectExists = await _context.Projects.AnyAsync(p => p.Id == projectId);
+            if (!projectExists)
+            {
+                return BadRequest("Project not found");
+            }
+        }
+        else
+        {
+            // Create a guest user if not exists
+            var guestUserId = Guid.Parse("00000000-0000-0000-0000-000000000001");
+            var guestUser = await _context.Users.FindAsync(guestUserId);
+            if (guestUser == null)
+            {
+                guestUser = new User
+                {
+                    Id = guestUserId,
+                    Email = "guest@siteagent.local",
+                    Name = "Guest",
+                    PasswordHash = "not-used",
+                    Credits = 0,
+                    CreatedAt = DateTime.UtcNow
+                };
+                _context.Users.Add(guestUser);
+                await _context.SaveChangesAsync();
+            }
+
+            // Create a new project for this chat session
+            projectId = Guid.NewGuid();
+            var newProject = new Project
+            {
+                Id = projectId,
+                UserId = guestUserId,
+                Name = "Chat Session",
+                Description = "Auto-created chat session",
+                Status = ProjectStatus.Draft,
+                CreatedAt = DateTime.UtcNow
+            };
+            _context.Projects.Add(newProject);
+            await _context.SaveChangesAsync();
+        }
 
         var userMessage = new ChatMessage
         {
