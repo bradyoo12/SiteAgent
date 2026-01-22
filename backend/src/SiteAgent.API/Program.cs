@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SiteAgent.Core.Interfaces;
 using SiteAgent.Infrastructure.Data;
+using SiteAgent.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,9 @@ builder.Services.AddSwaggerGen();
 // Database
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Gemini Service
+builder.Services.AddHttpClient<IGeminiService, GeminiService>();
 
 // CORS
 builder.Services.AddCors(options =>

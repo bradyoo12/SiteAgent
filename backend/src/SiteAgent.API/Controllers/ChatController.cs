@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SiteAgent.Core.Entities;
+using SiteAgent.Core.Interfaces;
 using SiteAgent.Infrastructure.Data;
 
 namespace SiteAgent.API.Controllers;
@@ -10,20 +11,52 @@ namespace SiteAgent.API.Controllers;
 public class ChatController : ControllerBase
 {
     private readonly AppDbContext _context;
+    private readonly IGeminiService _geminiService;
 
-    public ChatController(AppDbContext context)
+    public ChatController(AppDbContext context, IGeminiService geminiService)
     {
         _context = context;
+        _geminiService = geminiService;
     }
 
     [HttpPost("message")]
     public async Task<IActionResult> SendMessage([FromBody] SendMessageRequest request)
     {
-        // 임시 응답 (추후 Claude API 연동)
+        var projectId = request.ProjectId ?? Guid.NewGuid();
+
+        var userMessage = new ChatMessage
+        {
+            Id = Guid.NewGuid(),
+            ProjectId = projectId,
+            Role = "user",
+            Content = request.Content,
+            CreatedAt = DateTime.UtcNow
+        };
+        _context.ChatMessages.Add(userMessage);
+        await _context.SaveChangesAsync();
+
+        var conversationHistory = await _context.ChatMessages
+            .Where(m => m.ProjectId == projectId)
+            .OrderBy(m => m.CreatedAt)
+            .ToListAsync();
+
+        var aiResponseContent = await _geminiService.GenerateResponseAsync(request.Content, conversationHistory);
+
+        var aiMessage = new ChatMessage
+        {
+            Id = Guid.NewGuid(),
+            ProjectId = projectId,
+            Role = "assistant",
+            Content = aiResponseContent,
+            CreatedAt = DateTime.UtcNow
+        };
+        _context.ChatMessages.Add(aiMessage);
+        await _context.SaveChangesAsync();
+
         var response = new SendMessageResponse
         {
-            Content = $"\"{request.Content}\"에 대해 사이트를 생성할 준비가 되었습니다.\n\n현재 개발 중이므로 실제 생성 기능은 추후 연동됩니다.",
-            ProjectId = request.ProjectId ?? Guid.NewGuid()
+            Content = aiResponseContent,
+            ProjectId = projectId
         };
 
         return Ok(response);
