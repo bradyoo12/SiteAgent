@@ -47,6 +47,10 @@
       "Bash(gh run view:*)",
       "Bash(git pull:*)",
       "Bash(git stash:*)",
+      "Bash(dotnet restore:*)",
+      "Bash(dotnet clean:*)",
+      "Bash(dotnet list:*)"
+      "Bash(git stash:*)",
       "Bash(taskkill:*)"
     ]
   }
