@@ -1,4 +1,5 @@
 import { useState, KeyboardEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface ChatInputProps {
   onSend: (message: string) => void
@@ -7,6 +8,7 @@ interface ChatInputProps {
 
 export default function ChatInput({ onSend, disabled }: ChatInputProps) {
   const [message, setMessage] = useState('')
+  const { t } = useTranslation()
 
   const handleSubmit = () => {
     if (message.trim() && !disabled) {
@@ -30,7 +32,7 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="원하는 사이트를 설명해주세요..."
+            placeholder={t('chatInput.placeholder')}
             disabled={disabled}
             rows={1}
             className="flex-1 resize-none bg-transparent border-none outline-none text-gray-900 placeholder-gray-400 disabled:opacity-50"
@@ -41,11 +43,11 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
             disabled={!message.trim() || disabled}
             className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            전송
+            {t('chatInput.send')}
           </button>
         </div>
         <p className="mt-2 text-xs text-gray-400 text-center">
-          Shift + Enter로 줄바꿈
+          {t('chatInput.hint')}
         </p>
       </div>
     </div>

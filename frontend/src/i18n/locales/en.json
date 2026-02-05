@@ -1,0 +1,60 @@
+{
+  "header": {
+    "newProject": "New Project",
+    "login": "Login"
+  },
+  "home": {
+    "hero": {
+      "title": "Create Your Own",
+      "highlight": "Website Through Conversation",
+      "description1": "Build websites by chatting with AI, no coding required.",
+      "description2": "All you need is an idea."
+    },
+    "cta": {
+      "button": "Start for Free",
+      "subtext": "No credit card required · Create sites for free"
+    },
+    "features": {
+      "conversational": {
+        "title": "Conversational Creation",
+        "description": "Describe your desired site in natural language and AI will generate it automatically."
+      },
+      "preview": {
+        "title": "Real-time Preview",
+        "description": "Watch the creation process in real-time and make modifications."
+      },
+      "deploy": {
+        "title": "Instant Deploy",
+        "description": "Completed sites are immediately deployed to a temporary URL."
+      }
+    }
+  },
+  "chat": {
+    "empty": {
+      "title": "What kind of site would you like to create?",
+      "description": "Feel free to describe the type, design, and features you want."
+    },
+    "suggestions": {
+      "portfolio": "Portfolio Site",
+      "portfolioMessage": "I want to create a portfolio site",
+      "landing": "Landing Page",
+      "landingMessage": "I want to create a product landing page",
+      "blog": "Blog",
+      "blogMessage": "I want to create a personal blog",
+      "shop": "Online Shop",
+      "shopMessage": "I want to create a simple online shop"
+    },
+    "preview": {
+      "title": "Site Preview",
+      "description": "Generated site will appear here"
+    }
+  },
+  "chatInput": {
+    "placeholder": "Describe the site you want...",
+    "send": "Send",
+    "hint": "Shift + Enter for new line"
+  },
+  "language": {
+    "changed": "Changing language settings."
+  }
+}
